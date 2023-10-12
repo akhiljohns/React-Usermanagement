@@ -12,7 +12,7 @@ const postSignup = async (req, res) => {
     try {
         const userExist = await userModel.findOne({ email: email });
         if (userExist) {
-            res.send({
+            res.status(200).send({
                 success: false,
                 message: 'User already exist, please login'
             });
@@ -37,7 +37,7 @@ const postSignup = async (req, res) => {
             )
 
             res.cookie('token', token, { httpOnly: true, maxAge: 2 * 24 * 60 * 60 * 1000 })
-            res.send({
+            res.status(200).send({
                 success: true,
                 message: 'User created successfully',
 
@@ -45,7 +45,7 @@ const postSignup = async (req, res) => {
             });
         }
     } catch (err) {
-        console.error(err);
+        console.error("err is coming",err);
         res.status(500).send({
             success: false,
             message: 'Internal server error'

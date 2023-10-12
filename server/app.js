@@ -1,6 +1,6 @@
 import express from 'express'
 import cors from 'cors'
-import morgan from 'morgan'
+import logger from 'morgan'
 import cookieParser from 'cookie-parser'
 
 import dbConnection from './utils/dbConnection'
@@ -11,12 +11,14 @@ import adminRouter from './routes/adminRouter'
 const app = express();
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
-app.use(morgan("dev"))
+// app.use(morgan("dev"))
 app.use(cors({
     origin:'http://localhost:3000',
     credentials : true
 }))
 app.use(cookieParser())
+
+app.use(logger("dev"));
 
 app.use('/',userRouter)
 app.use('/admin',adminRouter)
@@ -28,6 +30,7 @@ dbConnection()
 // db.once("open", function () {
 //     console.log("Connected successfully");
 // });
+
 
 app.listen(4000, () => {
     console.log('App listening on port 4000');
