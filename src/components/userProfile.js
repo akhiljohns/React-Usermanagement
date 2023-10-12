@@ -10,10 +10,10 @@ const UserProfile = () => {
   const dispatch = useDispatch();
   const [selectedFile, setSelectedFile] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [isMediaSelectionVisible, setIsMediaSelectionVisible] = useState(false); // Declare isMediaSelectionVisible state
   const user = useSelector((state) => state.user);
   const { name, email, image } = user;
   const isLoggedIn = user.success;
-  const [isMediaSelectionVisible, setIsMediaSelectionVisible] = useState(false); // Add state for visibility
 
   const handleFileSelect = (event) => {
     setSelectedFile(event.target.files[0]);
@@ -74,7 +74,7 @@ const UserProfile = () => {
           <button
             onClick={() => {
               setIsMediaSelectionVisible(false); // Hide the media selection box
-              window.my_modal_3.close();
+              window.my_modal_3.close(); // Close the modal
             }}
             className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 font-bold"
           >
