@@ -1,0 +1,8 @@
+[[redirects]]
+  from = "/app1/*"
+  to = "/app1/index.html"
+  status = 200
+[[redirects]]
+  from = "/app2/*"
+  to = "/app2/index.html"
+  status = 200
