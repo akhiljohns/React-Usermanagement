@@ -20,6 +20,7 @@ const Login = () => {
     const onSubmit = async(values) => {
         try {
         const response= await apiInstance.post('/login',values)
+        console.log(response.data)
         const { user,success,message } = response.data;
         setLoginError(message)
         if(success){
