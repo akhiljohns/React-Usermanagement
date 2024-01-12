@@ -15,10 +15,7 @@ const Navbar = () => {
       const response = await apiInstance.post('/logout')
       dispatch(logout())
       navigate('/')
-      // if (response.success) {
-      //   dispatch(logout())
-      //   navigate('/')
-      // }
+      
     } catch (error) {
       console.error('API error:', error);
     }
